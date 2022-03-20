@@ -26,7 +26,6 @@ class Movie < ApplicationRecord
     # Here's a hint: Because the logic for determining whether a movie is a flop is tucked inside the Movie model,
     # you can make this change in one place. When you can do that, you know you're on the right design path!
 
-
     total_gross.blank? || total_gross < 225_000_000
   end
 
