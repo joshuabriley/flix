@@ -2,6 +2,11 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :name, presence: true
+  validates :username,  presence: true,
+                        format: { with: /\A[A-Z0-9]+\z/i},
+                        uniqueness: { case_sensitive: false }
+
+
   validates :email, presence: true,
                     format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { casesensitive: false }
