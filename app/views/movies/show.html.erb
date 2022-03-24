@@ -28,21 +28,7 @@
         <td><%= total_gross(@movie) %></td>
       </tr>
     </table>
-    <h2>Reviews</h2>
-    <ul>
-      <% if @movie.reviews.count >= 1 %>
-        <% @movie.reviews.each do |review| %>
-          <% if !review.name.nil? %>
-            <li>
-              <%= review.name %><br>
-              <%= pluralize(review.stars, 'star') %><br>
-              <%= review.comment %>
-            </li>
-          <% end %>
-        <% end %>
-      <% end %>
-    </ul>
-    <hr>
+
     <div
       x-data="{showReview: false}"
       x-id="['form-container']"
