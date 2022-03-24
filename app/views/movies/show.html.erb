@@ -58,8 +58,9 @@
   </div>
 </section>
 
-
-<section class="admin">
-  <%= link_to 'Edit', edit_movie_path(@movie), class: 'button' %>
-  <%= link_to 'Delete', @movie, class: 'button', method: :delete, data: { confirm: "Are you sure you want to delete this movie?" }%>
-</section>
+<% if current_user_admin? %>
+  <section class="admin">
+    <%= link_to 'Edit', edit_movie_path(@movie), class: 'button' %>
+    <%= link_to 'Delete', @movie, class: 'button', method: :delete, data: { confirm: "Are you sure you want to delete this movie?" }%>
+  </section>
+<% end %>
