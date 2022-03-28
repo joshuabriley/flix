@@ -1,0 +1,13 @@
+
+<h2><%= @genre.name %> Movies</h2>
+
+<% if @movies.present? %>
+  <section>
+    <% @movies.each do |movie| %>
+      <%= link_to image_tag(movie.image_file_name, alt: movie.title), movie, 'aria-label': movie.title %>
+    <% end %>
+  </section>
+<% else %>
+
+  <p>No movies found in this category</p>
+<% end %>
