@@ -16,4 +16,7 @@ class User < ApplicationRecord
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
   end
+
+  scope :by_name, -> { order(:name) }
+  scope :not_admin, -> { by_name.where(admin: false) }
 end
