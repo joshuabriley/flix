@@ -1,16 +1,15 @@
 class GenresController < ApplicationController
   before_action :require_signin, except: [:index, :show]
+  before_action :set_genre, only: [:show, :edit, :update, :destroy]
   def index
     @genres = Genre.all
   end
 
   def show
-    @genre = Genre.find(params[:id])
     @movies = @genre.movies
   end
 
   def edit
-    @genre = Genre.find(params[:id])
   end
 
   def new
@@ -27,7 +26,6 @@ class GenresController < ApplicationController
   end
 
   def update
-    @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
       redirect_to genres_path, notice: 'Genre successfully updated!'
     else
@@ -36,12 +34,15 @@ class GenresController < ApplicationController
   end
 
   def destroy
-    @genre = Genre.find(params[:id])
     @genre.destroy
     redirect_to genres_path, danger: 'Movie successfully deleted!'
   end
 
   private
+
+  def set_genre
+    @genre = Genre.find_by!(slug: params[:id])
+  end
 
   def genre_params
     params.require(:genre)
