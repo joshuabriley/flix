@@ -3,8 +3,8 @@
   <h1><%= params[:filtered] ? params[:filter].capitalize : 'All Movies' %></h1>
   <% @movies.each do |movie| %>
     <section class="movie">
-      <div class="movie">
-        <%= image_tag movie.image_file_name %>
+    <div class="movie">
+        <%= main_image(movie) %>
       </div>
       <div class="summary">
         <h2>
